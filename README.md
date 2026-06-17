@@ -1,4 +1,4 @@
-# Pipeline ETL Híbrido y Orquestación de Datos con Apache Hop, Docker y PostgreSQL 🐳📊
+# Pipeline ETL Híbrido y Orquestación de Datos con Apache Hop, Docker y PostgreSQL 🐳
 
 Proyecto avanzado de ingeniería de datos desarrollado para la materia de data warehouse en la carrera de Ingeniería de Software (CUUT), diseñado y ejecutado nativamente sobre un entorno **Fedora 43 Workstation**.
 
