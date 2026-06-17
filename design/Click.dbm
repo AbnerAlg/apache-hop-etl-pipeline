@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.2.2" use-changelog="false" max-obj-count="7"
+	 gen-disabled-objs-code="false" show-sys-schemas-rects="true"
+	 last-position="0,0" last-zoom="0.7" scene-rect="0,0,1577.76,1076.8"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="Click" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" name-color="#000000" sql-disabled="true">
+</schema>
+
+<table name="fact_ventas" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment> <![CDATA[Se almacenan las llaves primarias de cada dimension de las tablas del proyecto Click]]> </comment>
+	<position x="640" y="280"/>
+	<column name="id_venta" not-null="true">
+		<type name="serial" length="0"/>
+		<comment> <![CDATA[es la id de la fact de ventas]]> </comment>
+	</column>
+	<column name="cantidad">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="total_venta">
+		<type name="numeric" length="0"/>
+	</column>
+	<column name="id_tiempo">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_hora">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="id_producto">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_pago">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="id_pais_envio">
+		<type name="integer" length="0"/>
+	</column>
+</table>
+
+<table name="dim_tiempo" layers="0" collapse-mode="2" max-obj-count="14" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment> <![CDATA[Almacena los datos del tiempo para el caso click]]> </comment>
+	<position x="1200" y="500"/>
+	<column name="id_tiempo" not-null="true">
+		<type name="serial" length="0"/>
+		<comment> <![CDATA[Llave primaria para tiempo]]> </comment>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="date" length="0"/>
+		<comment> <![CDATA[Almacena la fecha]]> </comment>
+	</column>
+	<column name="anio">
+		<type name="integer" length="0"/>
+		<comment> <![CDATA[Almacena el año ]]> </comment>
+	</column>
+	<column name="trimestre">
+		<type name="smallint" length="0"/>
+		<comment> <![CDATA[Almacena el trimestre]]> </comment>
+	</column>
+	<column name="mes">
+		<type name="smallint" length="0"/>
+		<comment> <![CDATA[ALmacena el mes]]> </comment>
+	</column>
+	<column name="nombre_mes">
+		<type name="varchar" length="20"/>
+		<comment> <![CDATA[Almacena el nombre del mes (EJ. Febrero, Marzo)]]> </comment>
+	</column>
+	<column name="semana">
+		<type name="smallint" length="0"/>
+		<comment> <![CDATA[Almacena la semana]]> </comment>
+	</column>
+	<column name="dia">
+		<type name="smallint" length="0"/>
+		<comment> <![CDATA[Almacena el dia en numero]]> </comment>
+	</column>
+	<column name="nombre_dia">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="es_fin_semana">
+		<type name="boolean" length="0"/>
+		<comment> <![CDATA[Almacena si es o no fin de samana]]> </comment>
+	</column>
+	<column name="es_semana_santa">
+		<type name="boolean" length="0"/>
+		<comment> <![CDATA[Almacena si es o no semana santa]]> </comment>
+	</column>
+	<column name="anio_fiscal">
+		<type name="integer" length="0"/>
+		<comment> <![CDATA[Almacena si el año es fiscal ]]> </comment>
+	</column>
+	<constraint name="pk_dim_tiempo" type="pk-constr" table="public.dim_tiempo">
+		<columns names="id_tiempo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="dim_produto" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="600" y="780"/>
+	<column name="id_producto" not-null="true">
+		<type name="serial" length="0"/>
+		<comment> <![CDATA[Llave primaria del producto ]]> </comment>
+	</column>
+	<column name="categoria">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[Almacena la categoria ]]> </comment>
+	</column>
+	<column name="subcategoria">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[Almacena la subcategoria del producto]]> </comment>
+	</column>
+	<column name="marca">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[Almacena la marca del producto]]> </comment>
+	</column>
+	<column name="proveedor">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[Almacena el nombre del proveedor ]]> </comment>
+	</column>
+	<column name="sku">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[Almacena el sku]]> </comment>
+	</column>
+	<column name="nombre_producto">
+		<type name="varchar" length="200"/>
+		<comment> <![CDATA[Almacena el nombre del producto]]> </comment>
+	</column>
+	<constraint name="pk_dim_producto" type="pk-constr" table="public.dim_produto">
+		<columns names="id_producto" ref-type="src-columns"/>
+		<comment> <![CDATA[Almacena la llave primaria con el constrain de dim_producto]]> </comment>
+	</constraint>
+</table>
+
+<table name="dim_pais_envio" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment> <![CDATA[Almacena el país de envio para cada producto]]> </comment>
+	<position x="100" y="540"/>
+	<column name="id_pais_envio" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="pais">
+		<type name="varchar" length="80"/>
+		<comment> <![CDATA[ALmacena el nombre del pais]]> </comment>
+	</column>
+	<column name="estado">
+		<type name="varchar" length="80"/>
+		<comment> <![CDATA[Almacena el nombre del estado para su envio]]> </comment>
+	</column>
+	<column name="ciudad">
+		<type name="varchar" length="80"/>
+		<comment> <![CDATA[Almacena la ciudad]]> </comment>
+	</column>
+	<column name="region">
+		<type name="varchar" length="80"/>
+		<comment> <![CDATA[Almacena la region del envio]]> </comment>
+	</column>
+	<constraint name="pk_dim_pais_envio" type="pk-constr" table="public.dim_pais_envio">
+		<columns names="id_pais_envio" ref-type="src-columns"/>
+		<comment> <![CDATA[Almacena la llave primaria de la tabla de dim pais envio]]> </comment>
+	</constraint>
+</table>
+
+<table name="dim_pago" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment> <![CDATA[Almacena los datos para la tabla de dim pago]]> </comment>
+	<position x="1200" y="160"/>
+	<column name="id_pago" not-null="true">
+		<type name="serial" length="0"/>
+		<comment> <![CDATA[Llave primaria de dim pago]]> </comment>
+	</column>
+	<column name="pais_pago">
+		<type name="varchar" length="80"/>
+		<comment> <![CDATA[Almacena el pais del pago]]> </comment>
+	</column>
+	<column name="tipo_pago">
+		<type name="varchar" length="30"/>
+		<comment> <![CDATA[Se almacena el dim de pago]]> </comment>
+	</column>
+	<column name="institucion_bancaria_pago">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[ALmacena el tipo de banco para hacer apgo]]> </comment>
+	</column>
+	<column name="nombre_tarjeta_pago">
+		<type name="varchar" length="100"/>
+		<comment> <![CDATA[Almacena el nombre registrado para la tarjeta de pago]]> </comment>
+	</column>
+	<constraint name="pk_dim_pago" type="pk-constr" table="public.dim_pago">
+		<columns names="id_pago" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="dim_hora" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment> <![CDATA[ALmacena los datos de la hora]]> </comment>
+	<position x="120" y="200"/>
+	<column name="id_hora" not-null="true">
+		<type name="serial" length="0"/>
+		<comment> <![CDATA[Llave primaria de la hora]]> </comment>
+	</column>
+	<column name="hora_24">
+		<type name="varchar" length="25"/>
+		<comment> <![CDATA[Almacena la hora en formato de 24 horas]]> </comment>
+	</column>
+	<column name="hora_completa">
+		<type name="varchar" length="25"/>
+		<comment> <![CDATA[Almacena la hora completa ]]> </comment>
+	</column>
+	<column name="segmento_hora">
+		<type name="varchar" length="50"/>
+		<comment> <![CDATA[ALmacena el segmento de la hora]]> </comment>
+	</column>
+	<column name="periodo_hora">
+		<type name="varchar" length="50"/>
+		<comment> <![CDATA[Almacena el periodo de hora]]> </comment>
+	</column>
+	<column name="descripcion_hora">
+		<type name="varchar" length="50"/>
+		<comment> <![CDATA[ALmacena la descripcion de la hora ]]> </comment>
+	</column>
+	<constraint name="pk_dim_hora" type="pk-constr" table="public.dim_hora">
+		<columns names="id_hora" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="fk_fact_ventas_dim_tiempo" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.dim_tiempo" table="public.fact_ventas">
+	<columns names="id_tiempo" ref-type="src-columns"/>
+	<columns names="id_tiempo" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fact_ventas_dim_hora" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.dim_hora" table="public.fact_ventas">
+	<columns names="id_hora" ref-type="src-columns"/>
+	<columns names="id_hora" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fact_ventas_dim_producto" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.dim_produto" table="public.fact_ventas">
+	<columns names="id_producto" ref-type="src-columns"/>
+	<columns names="id_producto" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fact_ventas_dim_pago" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.dim_pago" table="public.fact_ventas">
+	<columns names="id_pago" ref-type="src-columns"/>
+	<columns names="id_pago" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fact_ventas_dim_pais_envio" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.dim_pais_envio" table="public.fact_ventas">
+	<columns names="id_pais_envio" ref-type="src-columns"/>
+	<columns names="id_pais_envio" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_fact_ventas_dim_tiempo" type="relfk" layers="0"
+	 src-table="public.fact_ventas"
+	 dst-table="public.dim_tiempo" reference-fk="fk_fact_ventas_dim_tiempo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fact_ventas_dim_hora" type="relfk" layers="0"
+	 src-table="public.fact_ventas"
+	 dst-table="public.dim_hora" reference-fk="fk_fact_ventas_dim_hora"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fact_ventas_dim_produto" type="relfk" layers="0"
+	 src-table="public.fact_ventas"
+	 dst-table="public.dim_produto" reference-fk="fk_fact_ventas_dim_producto"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fact_ventas_dim_pago" type="relfk" layers="0"
+	 src-table="public.fact_ventas"
+	 dst-table="public.dim_pago" reference-fk="fk_fact_ventas_dim_pago"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fact_ventas_dim_pais_envio" type="relfk" layers="0"
+	 src-table="public.fact_ventas"
+	 dst-table="public.dim_pais_envio" reference-fk="fk_fact_ventas_dim_pais_envio"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

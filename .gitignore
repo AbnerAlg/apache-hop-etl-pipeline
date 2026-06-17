@@ -1,0 +1,34 @@
+# ==========================================
+#  Docker & Credenciales (SEGURIDAD CRUCIAL)
+# ==========================================
+# Ignorar el archivo local con contraseñas reales
+.env
+
+# Ignorar carpetas donde Docker mapea y guarda los datos crudos de las BDs
+postgres_data/
+mongo_data/
+*data/
+
+# ==========================================
+#  Apache Hop & pgAdmin
+# ==========================================
+# Ignorar auditorías, logs y temporales de ejecución de Apache Hop
+*.log
+hop/audit/
+hop/config/
+
+# ==========================================
+#  Sistema Operativo (Fedora/Linux)
+# ==========================================
+# Archivos temporales de carpetas y sistema
+.DS_Store
+.directory
+.Trash/
+
+# ==========================================
+#  Python (Por si pgModeler o scripts generan caché)
+# ==========================================
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/

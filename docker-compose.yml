@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: contenedor-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password_secreta}
+      POSTGRES_DB: ${DB_NAME:-data_warehouse}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:latest
+    container_name: contenedor-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: contenedor-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@admin.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin123}
+    ports:
+      - "8080:80"
+
+  apache-hop:
+    image: apache/hop:latest
+    container_name: contenedor-apache-hop
+    ports:
+      - "8081:8081"
+
+volumes:
+  postgres_data:
+  mongo_data:

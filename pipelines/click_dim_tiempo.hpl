@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>click_dim_tiempo</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2026/05/25 17:16:13.665</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2026/05/25 17:16:13.665</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>Generate rows</from>
+      <to>Add sequence</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add sequence</from>
+      <to>Calculator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>JavaScript</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>JavaScript</from>
+      <to>Table output</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Add sequence</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Click</connection>
+    <counter_name>seq_dias</counter_name>
+    <increment_by>1</increment_by>
+    <max_value>4018</max_value>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <start_at>0</start_at>
+    <use_counter>Y</use_counter>
+    <use_database>N</use_database>
+    <valuename>dias</valuename>
+    <attributes/>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Calculator</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <calculation>
+      <calc_type>ADD_DAYS</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha_inicio</field_a>
+      <field_b>dias</field_b>
+      <field_c/>
+      <field_name>fecha</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Date</value_type>
+    </calculation>
+    <calculation>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha</field_a>
+      <field_b/>
+      <field_c/>
+      <field_name>anio</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Integer</value_type>
+    </calculation>
+    <calculation>
+      <calc_type>QUARTER_OF_DATE</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha</field_a>
+      <field_b/>
+      <field_c/>
+      <field_name>trimestre</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Integer</value_type>
+    </calculation>
+    <calculation>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha</field_a>
+      <field_b/>
+      <field_c/>
+      <field_name>mes</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Integer</value_type>
+    </calculation>
+    <calculation>
+      <calc_type>WEEK_OF_YEAR</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha</field_a>
+      <field_b/>
+      <field_c/>
+      <field_name>semana</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Integer</value_type>
+    </calculation>
+    <calculation>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha</field_a>
+      <field_b/>
+      <field_c/>
+      <field_name>dia</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Integer</value_type>
+    </calculation>
+    <calculation>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <conversion_mask/>
+      <currency_symbol/>
+      <decimal_symbol/>
+      <field_a>fecha</field_a>
+      <field_b/>
+      <field_c/>
+      <field_name>anio_fiscal</field_name>
+      <grouping_symbol/>
+      <remove>N</remove>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <value_type>Integer</value_type>
+    </calculation>
+    <failIfNoFile>Y</failIfNoFile>
+    <attributes/>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Generate rows</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <currency/>
+        <decimal/>
+        <format>yyyyMMdd</format>
+        <group/>
+        <length>-1</length>
+        <name>fecha_inicio</name>
+        <nullif>20200101</nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>Date</type>
+      </field>
+      <field>
+        <currency/>
+        <decimal/>
+        <format>yyyyMMdd</format>
+        <group/>
+        <length>-1</length>
+        <name>fecha_fin</name>
+        <nullif>20200101</nullif>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <type>Date</type>
+      </field>
+    </fields>
+    <interval_in_ms>1000</interval_in_ms>
+    <last_time_field>FiveSecondsAgo</last_time_field>
+    <limit>4018</limit>
+    <never_ending>N</never_ending>
+    <row_time_field>now</row_time_field>
+    <attributes/>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>JavaScript</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var meses = [
+"",
+"Enero",
+"Febrero",
+"Marzo",
+"Abril",
+"Mayo",
+"Junio",
+"Julio",
+"Agosto",
+"Septiembre",
+"Octubre",
+"Noviembre",
+"Diciembre"
+];
+
+nombre_mes = meses[mes];
+
+var dia_semana = fecha.getDay();
+
+if (dia_semana == 0) {
+  nombre_dia = "Domingo";
+} else if (dia_semana == 1) {
+  nombre_dia = "Lunes";
+} else if (dia_semana == 2) {
+  nombre_dia = "Martes";
+} else if (dia_semana == 3) {
+  nombre_dia = "Miércoles";
+} else if (dia_semana == 4) {
+  nombre_dia = "Jueves";
+} else if (dia_semana == 5) {
+  nombre_dia = "Viernes";
+} else if (dia_semana == 6) {
+  nombre_dia = "Sábado";
+}
+
+es_fin_semana = (dia_semana == 0 || dia_semana == 6);
+
+var fecha_texto =
+  anio + "-" +
+  ("0" + mes).slice(-2) + "-" +
+  ("0" + dia).slice(-2);
+
+es_semana_santa = (
+  (
+    (fecha_texto >= "2022-04-10" &amp;&amp; fecha_texto &lt;= "2022-04-17") ||
+    (fecha_texto >= "2023-04-02" &amp;&amp; fecha_texto &lt;= "2023-04-09") ||
+    (fecha_texto >= "2024-03-24" &amp;&amp; fecha_texto &lt;= "2024-03-31") ||
+    (fecha_texto >= "2025-04-13" &amp;&amp; fecha_texto &lt;= "2025-04-20") ||
+    (fecha_texto >= "2026-03-29" &amp;&amp; fecha_texto &lt;= "2026-04-05")
+  )
+  &amp;&amp;
+  es_fin_semana == true
+);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>nombre_mes</name>
+        <rename>nombre_mes</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>nombre_dia</name>
+        <rename>nombre_dia</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>es_fin_semana</name>
+        <rename>es_fin_semana</rename>
+        <type>Boolean</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>es_semana_santa</name>
+        <rename>es_semana_santa</rename>
+        <type>Boolean</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <add_columns>N</add_columns>
+    <always_drop_and_recreate>N</always_drop_and_recreate>
+    <auto_update_table_structure>N</auto_update_table_structure>
+    <change_column_types>N</change_column_types>
+    <commit>1000</commit>
+    <connection>Click</connection>
+    <drop_columns>N</drop_columns>
+    <fields>
+      <field>
+        <column_name>trimestre</column_name>
+        <stream_name>trimestre</stream_name>
+      </field>
+      <field>
+        <column_name>anio</column_name>
+        <stream_name>anio</stream_name>
+      </field>
+      <field>
+        <column_name>anio_fiscal</column_name>
+        <stream_name>anio_fiscal</stream_name>
+      </field>
+      <field>
+        <column_name>mes</column_name>
+        <stream_name>mes</stream_name>
+      </field>
+      <field>
+        <column_name>nombre_mes</column_name>
+        <stream_name>nombre_mes</stream_name>
+      </field>
+      <field>
+        <column_name>semana</column_name>
+        <stream_name>semana</stream_name>
+      </field>
+      <field>
+        <column_name>dia</column_name>
+        <stream_name>dia</stream_name>
+      </field>
+      <field>
+        <column_name>nombre_dia</column_name>
+        <stream_name>nombre_dia</stream_name>
+      </field>
+      <field>
+        <column_name>fecha</column_name>
+        <stream_name>fecha</stream_name>
+      </field>
+      <field>
+        <column_name>es_fin_semana</column_name>
+        <stream_name>es_fin_semana</stream_name>
+      </field>
+      <field>
+        <column_name>es_semana_santa</column_name>
+        <stream_name>es_semana_santa</stream_name>
+      </field>
+    </fields>
+    <ignore_errors>N</ignore_errors>
+    <only_when_have_rows>N</only_when_have_rows>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <return_field/>
+    <return_keys>N</return_keys>
+    <schema>"public"</schema>
+    <specify_fields>Y</specify_fields>
+    <table>dim_tiempo</table>
+    <tablename_field/>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_in_table>Y</tablename_in_table>
+    <truncate>N</truncate>
+    <use_batch>Y</use_batch>
+    <attributes/>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>64</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Execute SQL script</name>
+    <type>ExecSql</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <arguments>
+</arguments>
+    <connection>Click</connection>
+    <execute_each_row>N</execute_each_row>
+    <quoteString>N</quoteString>
+    <replace_variables>N</replace_variables>
+    <set_params>N</set_params>
+    <single_statement>N</single_statement>
+    <sql>DELETE FROM dim_tiempo;
+ALTER SEQUENCE dim_tiempo_id_tiempo_seq RESTART WITH 1;</sql>
+    <attributes/>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>32</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>
