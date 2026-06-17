@@ -1,7 +1,20 @@
-##  Arquitectura del Proyecto y Modelado de Datos
-El proyecto no solo incluye la automatización del pipeline, sino todo el ciclo de diseño de inteligencia de negocios:
+# Pipeline ETL Híbrido y Orquestación de Datos con Apache Hop, Docker y PostgreSQL 🐳📊
 
-1. **Modelado Dimensional (Kimball):** Diseño de la arquitectura del Data Warehouse siguiendo la metodología Kimball (Tablas de Hechos y Dimensiones) para optimizar las consultas analíticas.
-2. **Diseño de Base de Datos:** Modelado lógico y físico reflejado en el archivo `.dbm` e implementación del esquema en **PostgreSQL** mediante scripts estructurados de SQL.
-3. **Diccionario de Datos:** Documentación completa de tipos de datos, restricciones y descripciones de cada entidad en el almacén de datos.
-4. **Orquestación ETL:** Extracción, transformación y carga limpia de los datos mediante flujos visuales en **Apache Hop**.
+Proyecto avanzado de ingeniería de datos desarrollado para la materia de data warehouse en la carrera de Ingeniería de Software (CUUT), diseñado y ejecutado nativamente sobre un entorno **Fedora 43 Workstation**.
+
+##  Descripción del Proyecto
+Este proyecto implementa una arquitectura moderna de datos en contenedores para automatizar un flujo ETL híbrido. El sistema extrae información desde una base de datos NoSQL (**MongoDB**), procesa, limpia y transforma los flujos de datos mediante **Apache Hop**, y finalmente modela y carga la información estructurada bajo la metodología Kimball en un almacén de datos relacional (**PostgreSQL**).
+
+##  Stack Tecnológico y Entorno
+* **Infraestructura & Contenedores:** Docker & Docker Compose (Orquestación de servicios locales)
+* **Orquestador / ETL:** Apache Hop (Pipelines `.hpl` y Workflows `.hwf`)
+* **Bases de Datos:** PostgreSQL (Relacional) y MongoDB (NoSQL)
+* **Diseño y Administración:** pgModeler (Modelado lógico/físico) y pgAdmin
+* **Sistemas Operativos:** Fedora 43 (Linux)
+
+##  Arquitectura de Infraestructura (Microservicios)
+Todo el ecosistema se despliega de manera aislada y automatizada mediante contenedores:
+* `contenedor-postgres`: Almacén de datos final (Data Warehouse).
+* `contenedor-mongodb`: Origen de datos no estructurados/semiestructurados.
+* `contenedor-apache-hop`: Motor de ejecución de los pipelines y workflows de datos.
+* `contenedor-pgadmin`: Entorno web para la administración de PostgreSQL.
