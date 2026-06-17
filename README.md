@@ -6,7 +6,7 @@ Proyecto avanzado de ingeniería de datos desarrollado para la materia de data w
 Este proyecto implementa una arquitectura moderna de datos en contenedores para automatizar un flujo ETL híbrido. El sistema extrae información desde una base de datos NoSQL (**MongoDB**), procesa, limpia y transforma los flujos de datos mediante **Apache Hop**, y finalmente modela y carga la información estructurada bajo la metodología Kimball en un almacén de datos relacional (**PostgreSQL**).
 
 ##  Stack Tecnológico y Entorno
-* **Infraestructura & Contenedores:** Docker & Docker Compose (Orquestación de servicios locales)
+* **Infraestructura & Contenedores:** Docker 
 * **Orquestador / ETL:** Apache Hop (Pipelines `.hpl` y Workflows `.hwf`)
 * **Bases de Datos:** PostgreSQL (Relacional) y MongoDB (NoSQL)
 * **Diseño y Administración:** pgModeler (Modelado lógico/físico) y pgAdmin
